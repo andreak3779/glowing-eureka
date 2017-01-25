@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Games collection</title>
+    <link rel="stylesheet" href="scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Games Collection</h1>
+    </header>
+    <nav>
+        <button class="ui-button" id="AddGameButton">Add New Game</button>
+    </nav>
+    <main>
+        <section>
+            <!--List of Games -->
+            <ul id="gameList">
+            </ul>
+        </section>
+        <div id="newGameDialog" title="New Game" class="">
+            <form id="newGame">
+                <h2>Create a new game</h2>
+                <div>
+                    <label for="newtitle">Game Title:</label>
+                    <input type="text" id="newtitle" maxlength="70" class="ui-widget">
+                    <p>
+                        <fieldset>
+                            <legend>Select a platform: </legend>
+                            <input type="radio" name="newplatform" id="ps3">
+                            <label for="ps3">Playstation 3</label><br>
+                            <input type="radio" name="newplatform" id="ps4">
+                            <label for="ps4">Playstation 4</label><br>
+                            <input type="radio" name="newplatform" id="wiiu">
+                            <label for="wiiu">Wii U</label><br>
+                        </fieldset>
+                    </p>
+                    <p>
+                        <fieldset>
+                            <legend>Select a media type: </legend>
+                            <input type="radio" name="newmedia" id="disc">
+                            <label for="disc">Disc</label>
+                            <input type="radio" name="newmedia" id="download">
+                            <label for="download">Download</label>
+                        </fieldset>
+                    </p>
+                    <p>
+                        <textarea name="newdescription" id="newdescription" cols="40" rows="6"></textarea>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="scripts/jquery/jquery-3.1.1.min.js">
+    </script>
+    <script src="scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>
