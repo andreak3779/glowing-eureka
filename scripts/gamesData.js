@@ -23,15 +23,15 @@ class GameMediaTypes {
 }
 class GameData {
     constructor() {
-        this.init = function () {
+        this.init = () => {
             Lockr.prefix = 'game';
         };
-        this.get = function (title) {
+        this.get = (title) => {
             var gameString = Lockr.get(title);
             var obj = JSON.parse(gameString);
             return obj;
         };
-        this.add = function (newGame) {
+        this.add =(newGame) =>{
             var stringGame = JSON.stringify(game);
             Lockr.set(newGame.title, stringGame);
         };
@@ -39,11 +39,14 @@ class GameData {
             var stringGame = JSON.stringify(game);
             Lockr.set(game.title, stringGame);
         };
-        this.remove = function (title) {
+        this.remove = (title) => {
             Lockr.rm(title);
         };
-        this.getList = function () {
+        this.getList = () => {
             return Lockr.getAll();
         };
+        this.clearAll = () => {
+            Lockr.flush();
+        }
     }
 }

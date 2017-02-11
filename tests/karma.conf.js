@@ -8,7 +8,12 @@ module.export = function(config) {
            'https://code.jquery.com/jquery-3.1.1.min.js',
             'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js'
-       ] 
+       ],
+       exclude: [],
+       port: 8080, 
+       logLevel: config.LOG_INFO,
+       autoWatch: true,
+       browsers:['Chrome'],
+       singleRun: false
     });
-
-}
+};
