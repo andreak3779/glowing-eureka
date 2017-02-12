@@ -15,29 +15,30 @@ class GamePlatformTypes {
         this.psvita = "psvita";
     }
 }
+
 class GameMediaTypes {
     constructor() {
         this.disc = "disc";
         this.download = "download";
     }
 }
+
 class GameData {
     constructor() {
-        this.init = () => {
+        this.init = function () {
             Lockr.prefix = 'game';
         };
-        this.get = (title) => {
-            var gameString = Lockr.get(title);
-            var obj = JSON.parse(gameString);
+        this.get =function(title) {
+            var obj = Lockr.get(title);
+            
             return obj;
         };
-        this.add =(newGame) =>{
-            var stringGame = JSON.stringify(game);
-            Lockr.set(newGame.title, stringGame);
+        this.add = (newGame) => {
+            Lockr.set(newGame.title, newGame);
         };
-        this.change = function (game) {
-            var stringGame = JSON.stringify(game);
-            Lockr.set(game.title, stringGame);
+        this.change = (updateGame) => {
+            
+            Lockr.set(updateGame.title, updateGame);
         };
         this.remove = (title) => {
             Lockr.rm(title);
@@ -47,6 +48,6 @@ class GameData {
         };
         this.clearAll = () => {
             Lockr.flush();
-        }
+        };
     }
 }

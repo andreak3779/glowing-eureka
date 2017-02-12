@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    var newGameDialog;
-    newGameDialog = $("#newGameDialog").dialog({
+    var newGameDialog = $("#newGameDialog").dialog({
         autoOpen: false,
         height: 650,
         width: 500,

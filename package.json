@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "lockr": "^0.8.4"
+  },
+  "devDependencies": {
+    "karma-requirejs": "^1.1.0"
   }
 }
