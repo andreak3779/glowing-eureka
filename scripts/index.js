@@ -1,19 +1,20 @@
 $(document).ready(function () {
-    var newGameDialog = $("#newGameDialog").dialog({
+    var newGameDialog = $("#GameDialog").dialog({
         autoOpen: false,
         height: 650,
         width: 500,
         modal: true,
         buttons: [{
-                text: "Create a new game",
+                text: "Save",
                 click: function () {
-                    createGame();
+                    saveGame();
+                    this.dialog("close");
                 }
             },
             {
                 text: "Cancel",
                 click: function () {
-                    newGameDialog.dialog("close");
+                    this.dialog("close");
                 }
             }
         ],
@@ -25,28 +26,46 @@ $(document).ready(function () {
     });
 
     $("#AddGameButton").on("click", function () {
-        newGameDialog.dialog("open");
+        changeFormTitle("Add New Game");
+        newGameDialog.tile = "Create Game";
+        newGameDialog.dialog("open");  
+    });
+    $("#RemoveGameButton").on("click", function() {
+        
+    });
+    $("#ChangeButton").on("click", function() {
+
     });
 
-    
-    function createGame() {
-        var newGameForm;
-        newGameForm = $("newGame").serialize();
-        
-        //validate game
-        var newgame = new Game(newGameForm.newTitle, platform, media, description);
+    function changeFormTitle(titleText) {
+        $("#gameFormTitle").empty();
+        $("#gameFormTitle").text =titleText;
     };
 
-    function changeGame() {
+    function saveGame() {
+        var newGameForm = $("newGame").serialize();
+        var title = newGameForm.gametitle;
+        var plaform = newGameForm.gameplaform;
+        var media = newGameForm.gamemedia;
+        var description = newGameForm.gamedescription;
 
+        //validate game
+        var newgame = new Game(title,platform, media,description);
     };
 
     function removeGame() {
-
+        var title = 
+        gamesData.remove();
     };
 
-
     function loadGameList(games) {
+        if (games.length > 0) {
+            $('ul#gameList').removeClass('hidden');
+            $('emptyGameList').addClass('hidden');
+        } else { 
+            $('ul#gameList').addClass('hidden');
+            $('emptyGameList').removeClass('hidden');
+        }
 
         $.each(games, function (i, game) {
             var e = $("<li />");
@@ -56,10 +75,11 @@ $(document).ready(function () {
             e.append("<div>" + "<span>Platform: " + game.platform + " media type: " + game.media +
                 "<p>" + game.description + "</p></div>");
             $(e).appendTo('ul#gameList');
+            $('ul#gameList').fadeIn(400);
         });
     };
 
-    var gamesData = new gameData();
+    var gamesData = new GameData();
     gamesData.init();
     loadGameList(gamesData.getList());
 });

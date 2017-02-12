@@ -29,16 +29,11 @@ class GameData {
             Lockr.prefix = 'game';
         };
         this.get =function(title) {
-            var obj = Lockr.get(title);
-            
+            var obj = Lockr.get(title); 
             return obj;
         };
-        this.add = (newGame) => {
-            Lockr.set(newGame.title, newGame);
-        };
-        this.change = (updateGame) => {
-            
-            Lockr.set(updateGame.title, updateGame);
+        this.store = (changeGame) => {
+            Lockr.set(changeGame.title, changeGame);
         };
         this.remove = (title) => {
             Lockr.rm(title);

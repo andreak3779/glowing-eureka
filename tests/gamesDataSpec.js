@@ -21,7 +21,7 @@ describe('gamesData Tests', function(){
         var newGame = new Game("Fallout 4", gamePlatforms.ps4, gameMedias.disc,
             "A post-nuclear was sci-fi adventure game.");
 
-        gamesData.add(newGame);
+        gamesData.store(newGame);
 
         var objGame = gamesData.get(newGame.title);
 
@@ -34,9 +34,11 @@ describe('gamesData Tests', function(){
 
         var oldgame = gamesData.get("Fallout 4");
 
-        gamesData.change(newGame);
+        gamesData.store(newGame);
 
-        expect(newGame.description).toEqual("post-nuclear was adventure game. changed");
+        var changedGame = gamesData.get("Fallout 4");
+
+        expect(changeGame.description).toEqual("post-nuclear was adventure game. changed");
 
     });
 
