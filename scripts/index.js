@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    var newGameDialog = $("#GameDialog").dialog({
+    var gameDialog;
+    gameDialog = $("#GameDialog").dialog({
         autoOpen: false,
         height: 650,
         width: 500,
@@ -7,35 +8,40 @@ $(document).ready(function () {
         buttons: [{
                 text: "Save",
                 click: function () {
+                   if( validateGame() ) {
                     saveGame();
-                    this.dialog("close");
+                    $(this).dialog("close");
+                   } 
+                    
                 }
             },
             {
                 text: "Cancel",
                 click: function () {
-                    this.dialog("close");
+                    $(this).dialog("close");
+                }
+            },
+            {
+                text: "Remove",
+                click: function() {
+                    //get the current title.
+                    var title = $('#gametitle').text;
+                    //confirm deleting
+                    var yesRemove = confirm("Would you like to remove " + title+" game")
+                    if(yesRemove) {
+                        gamesData.remove(title);
+                    }
                 }
             }
-        ],
-        close: function () {
-
-            //form[0].reset();
-            //allFields.removeClass("ui-state-error");
-        }
+        ]
     });
 
     $("#AddGameButton").on("click", function () {
         changeFormTitle("Add New Game");
-        newGameDialog.tile = "Create Game";
-        newGameDialog.dialog("open");  
+        gameDialog.tile = "Create Game";
+        gameDialog.dialog("open");  
     });
-    $("#RemoveGameButton").on("click", function() {
-        
-    });
-    $("#ChangeButton").on("click", function() {
-
-    });
+    
 
     function changeFormTitle(titleText) {
         $("#gameFormTitle").empty();
@@ -43,7 +49,7 @@ $(document).ready(function () {
     };
 
     function saveGame() {
-        var newGameForm = $("newGame").serialize();
+        var newGameForm = $("gameform").serialize();
         var title = newGameForm.gametitle;
         var plaform = newGameForm.gameplaform;
         var media = newGameForm.gamemedia;
@@ -51,35 +57,36 @@ $(document).ready(function () {
 
         //validate game
         var newgame = new Game(title,platform, media,description);
-    };
-
-    function removeGame() {
-        var title = 
-        gamesData.remove();
-    };
-
+    }
     function loadGameList(games) {
         if (games.length > 0) {
             $('ul#gameList').removeClass('hidden');
-            $('emptyGameList').addClass('hidden');
+            $('#emptyGameList').addClass('hidden');
         } else { 
             $('ul#gameList').addClass('hidden');
-            $('emptyGameList').removeClass('hidden');
+            $('#emptyGameList').removeClass('hidden');
         }
 
-        $.each(games, function (i, game) {
+        $.each(games, function (i, g) {
             var e = $("<li />");
-            e.attr("id", game.title);
+            e.attr("id", g.title);
             e.attr("class", "game");
-            e.append("<h4>" + game.title + "</h4>");
-            e.append("<div>" + "<span>Platform: " + game.platform + " media type: " + game.media +
-                "<p>" + game.description + "</p></div>");
+            e.append("<h4>" + g.title + "</h4>");
+            e.append("<div>" + "<span>Platform: " + g.platform + " media type: " + g.media +
+                "<p>" + g.description + "</p></div>");
+            e.on("click",function(){
+                var changeTitle = $(this).attr("id"); 
+                changeFormTitle("Add New Game");
+                gameDialog.tile = "Change "+ changeTitle ;
+                gameDialog.dialog("open");  
+            });
             $(e).appendTo('ul#gameList');
             $('ul#gameList').fadeIn(400);
         });
-    };
+    }
 
     var gamesData = new GameData();
     gamesData.init();
+    gamesData.loadData();
     loadGameList(gamesData.getList());
 });

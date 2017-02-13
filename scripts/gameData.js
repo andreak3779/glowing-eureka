@@ -39,10 +39,22 @@ class GameData {
             Lockr.rm(title);
         };
         this.getList = () => {
-            return Lockr.getAll();
+            let games;
+            games = Lockr.getAll();
+            return games;
         };
         this.clearAll = () => {
             Lockr.flush();
+        };
+        this.loadData = () => {
+            if (localStorage.length == 0 ) {
+                var game1 = new Game("Catherine","ps3","disc","A unique puzzle adventure game.");
+                this.store(game1);
+                var game2 = new Game("Sleeping Dogs","ps4","disc","An open world crime adventure game set in Hong Kong");
+                this.store(game2);
+                var game3 = new Game("ZombiU","wiiU","disc","A first person zombie horror adventure game.");
+                this.store(game3);
+            }
         };
     }
 }
