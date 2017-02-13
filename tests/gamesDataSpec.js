@@ -38,7 +38,7 @@ describe('gamesData Tests', function(){
 
         var changedGame = gamesData.get("Fallout 4");
 
-        expect(changeGame.description).toEqual("post-nuclear was adventure game. changed");
+        expect(changedGame.description).toEqual("post-nuclear was adventure game. changed");
 
     });
 

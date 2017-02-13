@@ -3,10 +3,10 @@ module.exports = function(config) {
        basePath:'/home/andrea/Documents/src/glowing-eureka/tests',
        frameworks: ['jasmine'],
        files:[
-           'https://code.jquery.com/jquery-3.1.1.min.js',
-            'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js',
-            '/home/andrea/Documents/src/glowing-eureka/scripts/gamesData.js',
+           '../jquery-ui-1.12.1.custom/external/jquery/jquery.js',
+            '../jquery-ui-1.12.1.custom/jquery-ui.min.js',
+            '../scripts/lockr.min.js',
+            '../scripts/gameData.js',
             'gamesDataSpec.js'
        ],
        exclude: [],
