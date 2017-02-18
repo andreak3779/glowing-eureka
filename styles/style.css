@@ -1,3 +1,11 @@
 .hidden {
     display:none;
 }
+
+.formerror {
+    font-weight:bold;
+    border-color:red;
+    border-width: 3px;
+    border-style:inset;
+
+}

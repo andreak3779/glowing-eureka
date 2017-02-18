@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
     <header>
         <h1>Games Collection</h1>
@@ -29,30 +28,30 @@
                 <h2 id="gameFormTitle">Create a new game</h2>
                 <div>
                     <label for="gametitle">Game Title</label>
-                    <input type="text" id="gametitle" maxlength="70" class="ui-widget">
+                    <input type="text" id="gametitle" class="gamefield" maxlength="70" class="ui-widget">
                     <p>
-                        <fieldset>
+                        <fieldset id="platform">
                             <legend>Select a platform</legend>
-                            <input type="radio" name="gameplatform" id="ps3">
+                            <input type="radio" class="gamefield" name="gameplatform" id="ps3">
                             <label for="ps3">Playstation 3</label><br>
-                            <input type="radio" name="gameplatform" id="ps4">
+                            <input type="radio" class="gamefield" name="gameplatform" id="ps4">
                             <label for="ps4">Playstation 4</label><br>
-                            <input type="radio" name="gameplatform" id="wiiu">
+                            <input type="radio" class="gamefield" name="gameplatform" id="wiiu">
                             <label for="wiiu">Wii U</label><br>
                         </fieldset>
                     </p>
                     <p>
-                        <fieldset>
+                        <fieldset id="mediatype">
                             <legend>Select a media type</legend>
-                            <input type="radio" name="gameMedia" id="disc">
+                            <input type="radio" class="gamefield" name="gameMedia" id="disc">
                             <label for="disc">Disc</label>
-                            <input type="radio" name="gameMedia" id="download">
+                            <input type="radio" class="gamefield" name="gameMedia" id="download">
                             <label for="download">Download</label>
                         </fieldset>
                     </p>
                     <p>
                         <label for="gameDescription">Game Description</label>
-                        <textarea name="gameDescription" id="gameDescription" cols="40" rows="6"></textarea>
+                        <textarea name="gameDescription" id="gameDescription" class="gamefield" cols="40" rows="6"></textarea>
                     </p>
                 </div>
             </form>
